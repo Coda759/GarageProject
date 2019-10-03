@@ -5,13 +5,13 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -30,19 +30,19 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
-                                    <Button fx:id="park_bt" layoutX="98.0" layoutY="269.0" mnemonicParsing="false" text="Park Vehicle" textFill="#2fd326">
+                                    <Button fx:id="parkVehicle_bt" layoutX="103.0" layoutY="208.0" mnemonicParsing="false" text="Park Vehicle" textFill="#2fd326">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
                                     </Button>
-                                    <CheckBox fx:id="monthly_ckBox" layoutX="55.0" layoutY="164.0" mnemonicParsing="false" text="Monthly Plan" />
-                                    <TextField fx:id="lpTextF" layoutX="40.0" layoutY="102.0" promptText="Licence Plate Number" />
-                                    <Label layoutX="123.0" layoutY="21.0" text="Check in" textFill="#2035ae" underline="true">
+                                    <CheckBox fx:id="monthlyPlan_ckBox" layoutX="55.0" layoutY="164.0" mnemonicParsing="false" text="Monthly Plan" />
+                                    <TextField fx:id="lPlate_TextF" layoutX="40.0" layoutY="102.0" promptText="Licence Plate Number" />
+                                    <Label layoutX="58.0" layoutY="14.0" text="Check in" textFill="#2035ae" underline="true">
                                        <font>
                                           <Font size="32.0" />
                                        </font>
                                     </Label>
-                                    <MenuButton fx:id="stateMenu" layoutX="238.0" layoutY="101.0" mnemonicParsing="false" text="State">
+                                    <MenuButton fx:id="state_Menu" layoutX="238.0" layoutY="101.0" mnemonicParsing="false" text="State">
                                       <items>
                                         <MenuItem mnemonicParsing="false" text="CT" />
                                         <MenuItem mnemonicParsing="false" text="NJ" />
@@ -53,13 +53,21 @@
                                           <Font size="15.0" />
                                        </font>
                                     </MenuButton>
-                                    <MenuButton fx:id="typeMenu" layoutX="207.0" layoutY="160.0" mnemonicParsing="false" text="Vehicle Type">
+                                    <MenuButton fx:id="type_Menu" layoutX="207.0" layoutY="160.0" mnemonicParsing="false" text="Vehicle Type">
                                       <items>
                                         <MenuItem mnemonicParsing="false" text="Car" />
                                         <MenuItem mnemonicParsing="false" text="Motorcycle" />
                                           <MenuItem mnemonicParsing="false" text="Truck/Van" />
                                       </items>
                                     </MenuButton>
+                                    <Label layoutX="68.0" layoutY="303.0" text="Vehicle Assigned Lot:" />
+                                    <Text layoutX="46.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter License Plate:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="lot_TextF" editable="false" layoutX="211.0" layoutY="298.0" prefHeight="27.0" prefWidth="53.0" />
+                                    <Button fx:id="autoGen_bt" layoutX="222.0" layoutY="34.0" mnemonicParsing="false" text="Auto-Generate Vehicle" />
                                  </children>
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="307.0" prefWidth="707.0">
@@ -73,22 +81,30 @@
                                     <Button fx:id="getInfo_bt" layoutX="261.0" layoutY="94.0" mnemonicParsing="false" text="Retrieve Vehicle" />
                                     <Label layoutX="276.0" layoutY="174.0" text="Amout Due:" />
                                     <Text layoutX="302.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-                                    <ListView fx:id="ls_info" layoutX="22.0" layoutY="141.0" prefHeight="200.0" prefWidth="200.0" />
-                                    <Button fx:id="checkout_bt" layoutX="249.0" layoutY="265.0" mnemonicParsing="false" text="Checkout" textFill="#1b18bf">
+                                    <Button fx:id="checkout_bt" layoutX="279.0" layoutY="266.0" mnemonicParsing="false" text="Checkout" textFill="#1b18bf">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Button>
-                                    <TextField fx:id="amountDue" editable="false" layoutX="285.0" layoutY="193.0" prefHeight="27.0" prefWidth="47.0" promptText="\$0.0" />
+                                    <TextField fx:id="amountDue_TextF" editable="false" layoutX="285.0" layoutY="193.0" prefHeight="27.0" prefWidth="47.0" promptText="\$0.0" />
                                     <Label layoutX="5.0" layoutY="98.0" text="Ticket Number:">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Label>
+                                    <TextArea fx:id="cheackOut_TextA" layoutX="11.0" layoutY="138.0" prefHeight="218.0" prefWidth="245.0" />
                                  </children>
                               </AnchorPane>
                           </items>
                         </SplitPane>
+                        <TextField fx:id="vehicleSearch_TextF" layoutX="43.0" layoutY="421.0" promptText="Licence Plate Number" />
+                        <Text layoutX="79.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search For Vehicle" underline="true">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="vehicleSearch_bt" layoutX="232.0" layoutY="421.0" mnemonicParsing="false" text="Search" />
+                        <TextArea fx:id="vehicleSearch_TextA" layoutX="400.0" layoutY="401.0" prefHeight="236.0" prefWidth="321.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -109,10 +125,10 @@
                                     <Label layoutX="40.0" layoutY="68.0" text="Car" />
                                     <Label layoutX="40.0" layoutY="103.0" text="Motorcycle" />
                                     <Label layoutX="39.0" layoutY="137.0" text="Van/Trucks" />
-                                    <TextField layoutX="120.0" layoutY="63.0" promptText="\$10.00" />
-                                    <TextField layoutX="120.0" layoutY="98.0" promptText="\$7.00" />
-                                    <TextField layoutX="120.0" layoutY="132.0" promptText="\$18.00" />
-                                    <Button layoutX="139.0" layoutY="193.0" mnemonicParsing="false" text="Set New Price" />
+                                    <TextField fx:id="carPrices_TextF" layoutX="120.0" layoutY="63.0" promptText="\$10.00" />
+                                    <TextField fx:id="motorcPrices_TextF" layoutX="120.0" layoutY="98.0" promptText="\$7.00" />
+                                    <TextField fx:id="truckPrices_TextF" layoutX="120.0" layoutY="132.0" promptText="\$18.00" />
+                                    <Button fx:id="saveNewPrices_bt" layoutX="139.0" layoutY="193.0" mnemonicParsing="false" text="Set New Price" />
                                  </children></AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                  <children>
@@ -121,24 +137,29 @@
                                           <Font size="29.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="479.0" layoutY="36.0" promptText="Search account" />
+                                    <TextField fx:id="accSearch_TextF" layoutX="496.0" layoutY="50.0" promptText="User Name" />
                                     <Label layoutX="30.0" layoutY="77.0" />
-                                    <Button layoutX="684.0" layoutY="36.0" mnemonicParsing="false" text="Seach" />
-                                    <TextField layoutX="104.0" layoutY="72.0" promptText="Joe" />
+                                    <Button fx:id="accSearch_bt" layoutX="681.0" layoutY="50.0" mnemonicParsing="false" text="Search" />
+                                    <TextField fx:id="firstN_TextF" layoutX="104.0" layoutY="72.0" promptText="Joe" />
                                     <Label layoutX="20.0" layoutY="77.0" text="First Name:" />
                                     <Label layoutX="22.0" layoutY="117.0" text="Last Name:" />
-                                    <TextField layoutX="104.0" layoutY="112.0" promptText="Smith" />
+                                    <TextField fx:id="lastN_TextF" layoutX="104.0" layoutY="112.0" promptText="Smith" />
                                     <Label layoutX="23.0" layoutY="156.0" text="Usename: " />
                                     <Label layoutX="22.0" layoutY="196.0" text="Password: " />
-                                    <TextField layoutX="104.0" layoutY="151.0" promptText="jsmith12" />
-                                    <PasswordField layoutX="104.0" layoutY="191.0" promptText="*****" />
-                                    <DatePicker layoutX="104.0" layoutY="230.0" promptText="10/1/2019" />
+                                    <TextField fx:id="userN_TextF" layoutX="104.0" layoutY="151.0" promptText="jsmith12" />
+                                    <PasswordField fx:id="pw_PassF" layoutX="104.0" layoutY="191.0" promptText="*****" />
+                                    <DatePicker fx:id="date" layoutX="104.0" layoutY="230.0" promptText="10/1/2019" />
                                     <Label layoutX="22.0" layoutY="235.0" text="Start Date:" />
                                     <Label layoutX="19.0" layoutY="273.0" text="Employee ID:" />
-                                    <TextField layoutX="104.0" layoutY="268.0" promptText="12345" />
-                                    <Button layoutX="211.0" layoutY="309.0" mnemonicParsing="false" text="Create" />
-                                    <Button layoutX="27.0" layoutY="309.0" mnemonicParsing="false" text="Delete" />
-                                    <Button layoutX="116.0" layoutY="309.0" mnemonicParsing="false" text="Update" />
+                                    <TextField fx:id="idNumber_TextF" layoutX="104.0" layoutY="268.0" promptText="12345" />
+                                    <Button fx:id="accCreate_bt" layoutX="211.0" layoutY="309.0" mnemonicParsing="false" text="Create Account" />
+                                    <Button fx:id="accDelete_bt" layoutX="27.0" layoutY="309.0" mnemonicParsing="false" text="Delete" />
+                                    <Button fx:id="accUpdate_bt" layoutX="116.0" layoutY="309.0" mnemonicParsing="false" text="Update" />
+                                    <Label layoutX="513.0" layoutY="23.0" text="Look Up Account">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </AnchorPane>
                           </items>
