@@ -1,0 +1,56 @@
+package model;
+
+import java.util.Date;
+
+/**
+ * Abstract Account class for employee login and business use. Contains all personal information and user login details.
+ * @author Jonathon Shea
+ * @version 1.0
+ * @since 2019-10-04
+ *
+ */
+public abstract class Account {
+    private static int nextId = 1;
+    private String address;
+    private Date hiringDate;
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+
+    /**
+     * Constructor for the account class. Requires four parameters and sets the default password to 'Welcome1'
+     * and sets the username to the next 6-digit number in the sequence incrementing from 1.
+     * @param address This is the employee's address.
+     * @param phoneNumber This is the employee's phone number.
+     * @param firstName This is the employee's first name.
+     * @param lastName This is the employee's last name.
+     */
+    public Account(String address, String phoneNumber, String firstName, String lastName){
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = "Welcome1";
+        this.username = String.format("%06d", nextId++);
+
+    }
+
+
+    /**
+     * Login method for an account. Checks the input username and password against the stored values.
+     * @param username Username entered to be checked.
+     * @param password Password entered to be checked.
+     * @return Returns false is login is unsuccessful and true if login successful.
+     */
+    public boolean login(String username, String password){
+        boolean correctLogin = false;
+        if (username.contentEquals(this.username) &&  password.contentEquals(this.password)){
+            correctLogin = true;
+        }
+        return correctLogin;
+    }
+
+
+}
