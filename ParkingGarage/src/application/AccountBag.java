@@ -18,7 +18,10 @@ public class AccountBag {
      */
     public AccountBag(){
         accountMap = new HashMap<>();
+        this.generateDefaultAccount();
     }
+
+
 
     /**
      * Login method that checks for the provided username and if found attempts to login.
@@ -54,8 +57,44 @@ public class AccountBag {
             newAccount = new Manager(address, phoneNumber, firstName, lastName);
         else
             newAccount = new Attendant(address, phoneNumber, firstName, lastName);
-
+        this.accountMap.put(newAccount.getUsername(), newAccount);
     }
+
+
+    public String search(String query){
+        Account account = accountMap.get(query);
+        String message;
+        if(account != null)
+            message = account.toString();
+        else
+            message = "Account not found.";
+        return message;
+    }
+
+    public String delete(String query){
+        String message;
+        if(accountMap.remove(query) != null)
+            message = "Account deleted.";
+        else
+            message = "Account not found.";
+        return message;
+    }
+
+    /**
+     * Method for checking if active account is a manager account.
+     * @return Returns true if the active account is a manager.
+     */
+    public boolean getIsManager(){
+        return activeAccount instanceof Manager;
+    }
+
+    /**
+     * Generates a default manager account with the phone number and address of SCCC and the name Admin Admin.
+     */
+    private void generateDefaultAccount() {
+        this.addAccount("533 College Rd, Selden, NY 11784", "(631) 451-4110", "Admin", "Admin", true);
+    }
+
 
 
 }
