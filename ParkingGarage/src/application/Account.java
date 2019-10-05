@@ -52,5 +52,8 @@ public abstract class Account {
         return correctLogin;
     }
 
+    public String getUsername(){
+        return this.username;
+    }
 
 }
