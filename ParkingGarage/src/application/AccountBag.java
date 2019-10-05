@@ -1,4 +1,4 @@
-package model;
+package application;
 
 
 import java.util.HashMap;
@@ -54,7 +54,6 @@ public class AccountBag {
             newAccount = new Manager(address, phoneNumber, firstName, lastName);
         else
             newAccount = new Attendant(address, phoneNumber, firstName, lastName);
-
 
     }
 

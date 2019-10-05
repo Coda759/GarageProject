@@ -1,12 +1,11 @@
-package model;
-
+package application;
 /**
- * Manager employee account; retains all functions of a standard account but allows the manager to perform actions
- * on other employees and set garage parameters.
+ * Attendant class for employee login and business use. Contains all personal information and user login details.
  * @author Jonathon Shea
  * @version 1.0
+ *
  */
-public class Manager extends Account {
+public class Attendant extends Account {
     /**
      * Constructor for the account class. Requires three parameters and sets the default password to 'Welcome1'
      * and calls the generateUsername method to generate a username.
@@ -16,7 +15,7 @@ public class Manager extends Account {
      * @param firstName   This is the employee's first name.
      * @param lastName    This is the employee's last name.
      */
-    public Manager(String address, String phoneNumber, String firstName, String lastName) {
+    public Attendant(String address, String phoneNumber, String firstName, String lastName) {
         super(address, phoneNumber, firstName, lastName);
     }
 }

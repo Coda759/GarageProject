@@ -1,5 +1,4 @@
-package model;
-
+package application;
 import java.util.Date;
 
 /**
@@ -27,6 +26,7 @@ public abstract class Account {
      * @param firstName This is the employee's first name.
      * @param lastName This is the employee's last name.
      */
+   
     public Account(String address, String phoneNumber, String firstName, String lastName){
         this.address = address;
         this.phoneNumber = phoneNumber;
