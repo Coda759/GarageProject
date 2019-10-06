@@ -60,6 +60,41 @@ public class AccountBag {
         this.accountMap.put(newAccount.getUsername(), newAccount);
     }
 
+    /**
+     * Method for updating an account; Finds an account by id and sets all other fields to the input values if found.
+     * Does not update values with empty strings or null.
+     * @param id Id to be queried to update account.
+     * @param password New password.
+     * @param address New Address.
+     * @param phoneNumber New phone number.
+     * @param firstName New First Name.
+     * @param lastName New Last Name.
+     * @return
+     */
+    public boolean updateAccount(String id, String password, String address, String phoneNumber, String firstName, String lastName){
+        Account account = accountMap.get(id);
+        boolean accountUpdated = false;
+        if(account != null){
+            if(checkInputIsNotEmpty(address))
+                account.setAddress(address);
+            if(checkInputIsNotEmpty(firstName))
+                account.setFirstName(firstName);
+            if(checkInputIsNotEmpty(lastName))
+                account.setLastName(lastName);
+            if(checkInputIsNotEmpty(phoneNumber))
+                account.setPassword(phoneNumber);
+            if(checkInputIsNotEmpty(password))
+                account.setPassword(password);
+            accountUpdated = true;
+        }
+        return accountUpdated;
+    }
+
+
+    private boolean checkInputIsNotEmpty(String input){
+        return input != null && !input.trim().contentEquals("");
+    }
+
 
     public String search(String query){
         Account account = accountMap.get(query);
@@ -89,7 +124,8 @@ public class AccountBag {
     }
 
     /**
-     * Generates a default manager account with the phone number and address of SCCC and the name Admin Admin.
+     * Generates a default manager account with the phone number and address of SCCC Ammerman campus and the name Admin Admin.
+     * Due to the nature of the class the username id will be 000001
      */
     private void generateDefaultAccount() {
         this.addAccount("533 College Rd, Selden, NY 11784", "(631) 451-4110", "Admin", "Admin", true);

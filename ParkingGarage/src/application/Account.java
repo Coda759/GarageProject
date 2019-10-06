@@ -1,4 +1,5 @@
 package application;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Date;
 public abstract class Account {
     private static int nextId = 1;
     private String address;
-    private Date hiringDate;
+    private String hiringDate;
     private String username;
     private String password;
     private String firstName;
@@ -34,6 +35,8 @@ public abstract class Account {
         this.lastName = lastName;
         this.password = "Welcome1";
         this.username = String.format("%06d", nextId++);
+        SimpleDateFormat today = new SimpleDateFormat("yyyy-MM-dd");
+        hiringDate = today.format(new Date());
 
     }
 
@@ -56,4 +59,69 @@ public abstract class Account {
         return this.username;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getHiringDate(){
+        return hiringDate;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder accountDetails = new StringBuilder("Username: ");
+        accountDetails.append(username);
+        accountDetails.append('\n');
+        accountDetails.append("Name: ");
+        accountDetails.append(lastName);
+        accountDetails.append(", ");
+        accountDetails.append(firstName);
+        accountDetails.append('\n');
+        accountDetails.append("Address: ");
+        accountDetails.append(address);
+        accountDetails.append('\n');
+        accountDetails.append("Phone Number: ");
+        accountDetails.append(phoneNumber);
+        accountDetails.append('\n');
+        accountDetails.append("Hiring Date: ");
+        accountDetails.append(hiringDate);
+        accountDetails.append('\n');
+        return accountDetails.toString();
+    }
 }

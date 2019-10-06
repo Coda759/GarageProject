@@ -36,6 +36,25 @@ public class GarageRates {
         this.truckRate = truckRate;
     }
 
+    /**
+     * Updates the three values in the object. If any values are less than or equal to 0.
+     * @param carRate
+     * @param motorcycleRate
+     * @param truckRate
+     */
+    public void updateRates(double carRate, double motorcycleRate, double truckRate){
+        if(checkRateIsGreaterThanZero(carRate))
+            this.carRate = carRate;
+        if(checkRateIsGreaterThanZero(motorcycleRate))
+            this.motorcycleRate = motorcycleRate;
+        if(checkRateIsGreaterThanZero(truckRate))
+            this.truckRate = truckRate;
+    }
+
+    private boolean checkRateIsGreaterThanZero(double rate){
+        return rate > 0;
+    }
+
     public double getCarRate() {
         return carRate;
     }
