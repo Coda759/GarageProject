@@ -1,5 +1,7 @@
 package application;
-
+/**
+ * @author Rino Espinal
+ */
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,19 +29,20 @@ public class LogIn_Controller {
 	
 	/**
 	 * @throws IOException 
-	 * 
+	 * This methods gets the sign in information and sends it to be checked.
+	 * If the username and password are correct. Main menu is set as the scene.
 	 */
 	
 	public void singinButtonPushed(ActionEvent event) throws IOException
-	{	
-		if(account.login(userName_TextF.getText(), pasword_PassF.getText()) == false){
+	{	boolean validation;
+		validation = account.login(userName_TextF.getText(), pasword_PassF.getText());
+		if(validation == true){
 			Parent mainView = FXMLLoader.load(getClass().getResource("MainGui.fxml"));
 			Scene mainScence = new Scene(mainView);
-			
-			//This line gets the stage information
-			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-			window.setScene(mainScence);
-			window.show();
+			Stage mainWindow = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			mainWindow.setScene(mainScence);
+			mainWindow.setResizable(false);
+			mainWindow.show();
 		}
 		else{
 			loginMessage_Label.setText("Invalid Account, Please Try again.");
