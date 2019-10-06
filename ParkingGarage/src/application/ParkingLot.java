@@ -1,3 +1,4 @@
+package application;
 import java.util.PriorityQueue;
 
 public class ParkingLot {
