@@ -1,6 +1,5 @@
 package application;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * Abstract Account class for employee login and business use. Contains all personal information and user login details.
@@ -35,8 +34,8 @@ public abstract class Account {
         this.lastName = lastName;
         this.password = "Welcome1";
         this.username = String.format("%06d", nextId++);
-        SimpleDateFormat today = new SimpleDateFormat("yyyy-MM-dd");
-        hiringDate = today.format(new Date());
+        LocalDate today = LocalDate.now();
+        hiringDate = today.toString();
 
     }
 

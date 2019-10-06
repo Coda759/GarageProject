@@ -37,7 +37,7 @@ public class GarageRates {
     }
 
     /**
-     * Updates the three values in the object. If any values are less than or equal to 0.
+     * Updates the three values in the object. Only values greater than 0 are updated.
      * @param carRate
      * @param motorcycleRate
      * @param truckRate

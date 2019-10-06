@@ -43,6 +43,14 @@ public class AccountBag {
     }
 
     /**
+     * Sets the active account to null.
+     */
+    public void logout(){
+        activeAccount = null;
+    }
+
+
+    /**
      * Takes 5 parameters 4 of which are employee information and generates a new account and adds it to the bag.
      * The last parameter denotes whether or not the account is an attendant or manager.
      * @param address
