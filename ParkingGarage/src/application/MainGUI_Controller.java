@@ -258,7 +258,7 @@ public class MainGUI_Controller {
 	    }
 		/**
 		 * @throws IOException 
-		 * This methods gets the sign in information and sends it to be checked.
+		 * This methods gets sets the sign gets the signed in scene.
 		 * If the username and password are correct. Main menu is set as the scene.
 		 */
 		
