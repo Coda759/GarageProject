@@ -258,8 +258,7 @@ public class MainGUI_Controller {
 	    }
 		/**
 		 * @throws IOException 
-		 * This methods gets sets the sign gets the signed in scene.
-		 * If the username and password are correct. Main menu is set as the scene.
+		 * This methods sets the main scene as the signed in scene.
 		 */
 		
 		public void signoutButtonPushed(ActionEvent event) throws IOException
@@ -271,7 +270,37 @@ public class MainGUI_Controller {
 				mainWindow.setResizable(false);
 				mainWindow.show();
 		}
-
+		@FXML
+		private TextField userName_TextF;
+		@FXML
+		private PasswordField pasword_PassF;
+		@FXML
+		private Button signIn_bt;
+		@FXML
+		private Label loginMessage_Label;
+		
+		/**
+		 * @throws IOException 
+		 * This methods gets the sign in information and sends it to be checked.
+		 * If the username and password are correct. Main menu is set as the scene.
+		 */
+		
+		public void singinButtonPushed(ActionEvent event) throws IOException
+		{	boolean validation;
+			validation = account.login(userName_TextF.getText(), pasword_PassF.getText());
+			if(validation == true){
+				Parent mainView = FXMLLoader.load(getClass().getResource("MainGui.fxml"));
+				Scene mainScence = new Scene(mainView);
+				Stage mainWindow = (Stage) ((Node)event.getSource()).getScene().getWindow();
+				mainWindow.setScene(mainScence);
+				mainWindow.setResizable(false);
+				mainWindow.show();
+			}
+			else{
+				loginMessage_Label.setText("Invalid Account, Please Try again.");
+				loginMessage_Label.setVisible(true);
+			}
+		}
 	
 	}
 
