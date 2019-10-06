@@ -102,4 +102,26 @@ public abstract class Account {
     public String getHiringDate(){
         return hiringDate;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder accountDetails = new StringBuilder("Username: ");
+        accountDetails.append(username);
+        accountDetails.append('\n');
+        accountDetails.append("Name: ");
+        accountDetails.append(lastName);
+        accountDetails.append(", ");
+        accountDetails.append(firstName);
+        accountDetails.append('\n');
+        accountDetails.append("Address: ");
+        accountDetails.append(address);
+        accountDetails.append('\n');
+        accountDetails.append("Phone Number: ");
+        accountDetails.append(phoneNumber);
+        accountDetails.append('\n');
+        accountDetails.append("Hiring Date: ");
+        accountDetails.append(hiringDate);
+        accountDetails.append('\n');
+        return accountDetails.toString();
+    }
 }
