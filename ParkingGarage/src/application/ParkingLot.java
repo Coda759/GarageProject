@@ -1,11 +1,13 @@
-package application;
 import java.util.PriorityQueue;
+import java.util.Scanner;
+import java.util.Comparator;
 
 public class ParkingLot {
 	
-	private PriorityQueue<ParkingSpot.MotorbikeSpot> motoLot = new PriorityQueue<ParkingSpot.MotorbikeSpot>();
-	private PriorityQueue<ParkingSpot.SedanSpot> sedanLot = new PriorityQueue<ParkingSpot.SedanSpot>();
-	private PriorityQueue<ParkingSpot.TruckSpot> truckLot = new PriorityQueue<ParkingSpot.TruckSpot>();
+	private PriorityQueue<ParkingSpot.MotorbikeSpot> motoLot = new PriorityQueue<ParkingSpot.MotorbikeSpot>(new lotComparator());
+	private PriorityQueue<ParkingSpot.SedanSpot> sedanLot = new PriorityQueue<ParkingSpot.SedanSpot>(new lotComparator());
+	private PriorityQueue<ParkingSpot.TruckSpot> truckLot = new PriorityQueue<ParkingSpot.TruckSpot>(new lotComparator());
+	private Vehicle vehicle;
 	private ParkingSpot.MotorbikeSpot motoSpot;
 	private ParkingSpot.SedanSpot sedanSpot;
 	private ParkingSpot.TruckSpot truckSpot;
@@ -15,6 +17,7 @@ public class ParkingLot {
 	private final int maxMotorbikeSpots = 15;
 	private final int maxSedanSpots = 70;
 	private final int maxTruckSpots = 15;
+	private Scanner key = new Scanner(System.in);
 	
 	public String showLot() {
 		return motoLot + "\n" + sedanLot + "\n" + truckLot;
@@ -63,4 +66,56 @@ public class ParkingLot {
 		}
 	}
 	
+	public void retrieveVehicle(Vehicle vehicle) {
+		sedanSpot.removeVehicle(vehicle);
+		sedanLot.remove(sedanSpot);
+	}
+	
+	public class lotComparator implements Comparator<ParkingSpot> {
+
+		@Override
+		public int compare(ParkingSpot spot, ParkingSpot other) {
+			if(spot.num.compareTo(other.num) < 0) {
+				return -1;
+			} else if(spot.num.compareTo(other.num) > 0) {
+				return 1;
+			} else {
+				return 0;
+			}
+		}
+	}
+	
+	
 }
+
+
+
+//public class Test {
+//
+//	public static void main(String[] args) {
+//		
+//		Vehicle.Motorbike moto1 = new Vehicle.Motorbike();
+//		Vehicle.Sedan sedan = new Vehicle.Sedan();
+//		Vehicle.Sedan sedan2 = new Vehicle.Sedan();
+//		Vehicle.Sedan sedan3 = new Vehicle.Sedan();
+//		Vehicle.Truck truck1 = new Vehicle.Truck();
+//		Vehicle.Truck truck2 = new Vehicle.Truck();
+//
+//    	ParkingLot lot = new ParkingLot();
+//    	lot.parkVehicle(sedan);
+//    	lot.parkVehicle(sedan2);
+//    	lot.parkVehicle(moto1);
+//    	lot.parkVehicle(truck1);
+//    	lot.parkVehicle(truck2);
+//    	System.out.println(lot.showLot());
+//    	
+//    	System.out.println();
+//    	lot.retrieveVehicle(sedan);
+//    	lot.parkVehicle(sedan3);
+//    	
+//    	System.out.println();
+//    	System.out.println(lot.showLot());
+//	}
+// 
+//}
+//Sedan 3 takes third spot even though 2nd spot is free?
