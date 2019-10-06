@@ -124,7 +124,8 @@ public class AccountBag {
     }
 
     /**
-     * Generates a default manager account with the phone number and address of SCCC and the name Admin Admin.
+     * Generates a default manager account with the phone number and address of SCCC Ammerman campus and the name Admin Admin.
+     * Due to the nature of the class the username id will be 000001
      */
     private void generateDefaultAccount() {
         this.addAccount("533 College Rd, Selden, NY 11784", "(631) 451-4110", "Admin", "Admin", true);
