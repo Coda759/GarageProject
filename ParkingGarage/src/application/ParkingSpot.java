@@ -1,4 +1,3 @@
-package application;
 public class ParkingSpot implements Comparable<ParkingSpot> {
 	
 	enum ParkingSpotType {
@@ -49,18 +48,13 @@ public class ParkingSpot implements Comparable<ParkingSpot> {
 		}
 	}
 	
-	public ParkingSpot(ParkingSpotType type) {
-		this.type = type;
+	public ParkingSpot() {
+		
 	}
 	
 	public boolean addVehicle(Vehicle vehicle) {
-		if(vehicle.getSize() > this.getParkingSpotValue() || this.isOccupied() == true) {
-			System.out.println("You can't park here");
-			return false;
-		} else {
-			this.vehicle = vehicle;
-			return available = false;
-		}
+		this.vehicle = vehicle;
+		return available = false;
 	}
 	
 	public boolean removeVehicle() {
@@ -68,9 +62,13 @@ public class ParkingSpot implements Comparable<ParkingSpot> {
 		return available = true;
 	}
 	
+	public void setValue(ParkingSpotType value) {
+		this.type = value;
+	}
+	
 	public static class MotorbikeSpot extends ParkingSpot {
 		public MotorbikeSpot(String num) {
-			super(ParkingSpotType.MOTORBIKEspot);
+			setValue(ParkingSpot.ParkingSpotType.MOTORBIKEspot);
 			this.num = num;
 			
 		}
@@ -78,21 +76,21 @@ public class ParkingSpot implements Comparable<ParkingSpot> {
 	
 	public static class SedanSpot extends ParkingSpot {
 		public SedanSpot(String num) {
-			super(ParkingSpotType.SEDANspot);
+			setValue(ParkingSpot.ParkingSpotType.SEDANspot);
 			this.num = num;
 		}
 	}
 	
 	public static class TruckSpot extends ParkingSpot {
 		public TruckSpot(String num) {
-			super(ParkingSpotType.TRUCKspot);
+			setValue(ParkingSpot.ParkingSpotType.TRUCKspot);
 			this.num = num;
 		}
 	}
 	
 	@Override
 	public String toString() {
-		return num + " occupied: " + isOccupied();
+		return num + " occupied: " + isOccupied() + ", vehicle: " + this.vehicle;
 	}
 }
 
