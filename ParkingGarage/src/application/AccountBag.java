@@ -59,13 +59,14 @@ public class AccountBag {
      * @param lastName
      * @param isManager If true account is created as a manager class; if false account as attendant class.
      */
-    public void addAccount(String address, String phoneNumber, String firstName, String lastName, Boolean isManager){
+    public String addAccount(String address, String phoneNumber, String firstName, String lastName, Boolean isManager){
         Account newAccount;
         if(isManager)
             newAccount = new Manager(address, phoneNumber, firstName, lastName);
         else
             newAccount = new Attendant(address, phoneNumber, firstName, lastName);
         this.accountMap.put(newAccount.getUsername(), newAccount);
+        return newAccount.toString();
     }
 
     /**
@@ -137,6 +138,10 @@ public class AccountBag {
      */
     private void generateDefaultAccount() {
         this.addAccount("533 College Rd, Selden, NY 11784", "(631) 451-4110", "Admin", "Admin", true);
+    }
+
+    public String getActiveId(){
+        return activeAccount.getUsername();
     }
 
 
