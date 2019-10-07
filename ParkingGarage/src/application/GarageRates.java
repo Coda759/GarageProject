@@ -51,6 +51,22 @@ public class GarageRates {
             this.truckRate = truckRate;
     }
 
+    /**
+     * Returns the rate by specified size.
+     * @param size  Size determined by the following 1-motorcycle; 2-car; 3-truck.
+     * @return Double containing the specified rate.  Default return is car rate.
+     */
+    public double getSpecificRate(int size){
+        double rate;
+        if(size == 1)
+            rate = this.motorcycleRate;
+        else if(size == 3)
+            rate = this.truckRate;
+        else
+            rate = this.carRate;
+        return rate;
+    }
+
     private boolean checkRateIsGreaterThanZero(double rate){
         return rate > 0;
     }
