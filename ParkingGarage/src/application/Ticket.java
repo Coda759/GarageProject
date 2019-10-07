@@ -31,10 +31,9 @@ public class Ticket {
 
 
     private void generateId(){
-        StringBuilder id = new StringBuilder(this.attendantId.substring(3));
-        id.append(this.date.replaceAll("-", "").trim());
+        StringBuilder id = new StringBuilder();
         id.append(this.parkTime.replaceAll(":","").trim());
-        id.append(carId.trim().substring(0,4));
+        id.append(carId.trim().substring(0,4).replaceAll(" ",""));
         this.ticketId = id.toString();
     }
 
