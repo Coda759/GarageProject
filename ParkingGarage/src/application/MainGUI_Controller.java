@@ -124,7 +124,7 @@ public class MainGUI_Controller {
 		
 			vehicle = new Vehicle(licensePlate,vehicleSize);
 			
-			System.out.println(spotAssigned = parklot.parkVehicle(vehicle));
+			spotAssigned = parklot.parkVehicle(vehicle);
 			
 			lot_TextF.setText(spotAssigned);
 			if(!spotAssigned.contentEquals("Spots Full"))
@@ -155,7 +155,6 @@ public class MainGUI_Controller {
 		public void checkoutButtonPushed()
 		{	
 			parklot.retrieveVehicle(ticket.searchTicket(checkout_ID.getText()).getVehicleID());
-			//receipt.add(ticket.searchTicket(checkout_ID.getText()));
 			amountDue_TextF.setText((receipt.add(ticket.searchTicket(checkout_ID.getText()))));
 			cheackOut_TextA.setText("Thank You!\n Please come back.");
 		}
@@ -168,7 +167,6 @@ public class MainGUI_Controller {
 		{	
 			String printTicket;
 			printTicket = ticket.search(checkout_ID.getText());
-			
 			cheackOut_TextA.setText((printTicket));
 		}
 		

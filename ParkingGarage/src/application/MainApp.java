@@ -20,7 +20,6 @@ public class MainApp extends Application {
 		try {
 			Parent root = (BorderPane)FXMLLoader.load(getClass().getResource("LogInGui.fxml"));
 			Scene scene = new Scene(root);
-			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Welcome");
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);

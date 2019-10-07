@@ -83,29 +83,6 @@ public String generateLicensePlate() {
 		this.size = size;
 	}
 	
-//	//Types of Vehicles:
-//	
-//	public static class Truck extends Vehicle {
-//		public Truck() {
-//			setLicensePlate(generateLicensePlate());
-//			setSize(VehicleType.TRUCK.getSize());
-//		}
-//	}
-//	
-//	public static class Sedan extends Vehicle {
-//		public Sedan() {
-//			setLicensePlate(generateLicensePlate());
-//			setSize(VehicleType.SEDAN.getSize());
-//		}
-//	}
-//	
-//	public static class Motorbike extends Vehicle {
-//		public Motorbike() {
-//			setLicensePlate(generateLicensePlate());
-//			setSize(VehicleType.MOTORBIKE.getSize());
-//		} 
-//	}
-	
 	public Vehicle(){
 		
 	}
