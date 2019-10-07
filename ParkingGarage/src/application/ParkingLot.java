@@ -17,7 +17,7 @@ public class ParkingLot {
 	private ParkingSpot.TruckSpot truckSpot;
 	private ParkingSpot spot;
 	private final int maxMotorbikeSpots = 15;
-	private final int maxSedanSpots = 7;
+	private final int maxSedanSpots = 70;
 	private final int maxTruckSpots = 15;
 	private String licensePlate;
 	private HashMap<String, ParkingSpot> parkedVehicles = new HashMap<String, ParkingSpot>();
