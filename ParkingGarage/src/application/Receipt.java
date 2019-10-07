@@ -27,8 +27,7 @@ public class Receipt {
         LocalTime now = LocalTime.now();
         LocalTime parked = LocalTime.parse(parkTime);
         parkDuration = SECONDS.between(parked, now);
-        double parkDurationHours = parkDuration / 3600;
-        amountDue = parkDurationHours * ticket.getRate();
+        amountDue = (double)parkDuration * ticket.getRate() / 3600;
 
     }
 
