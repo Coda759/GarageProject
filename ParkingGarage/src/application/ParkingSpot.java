@@ -1,3 +1,7 @@
+/**
+ * @author Nicholas Smiriagine
+ */
+
 package application;
 public class ParkingSpot implements Comparable<ParkingSpot> {
 	
