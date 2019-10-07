@@ -103,6 +103,10 @@ public class Vehicle {
 //		} 
 //	}
 	
+	public Vehicle() {
+		
+	}
+	
 	public Vehicle(String licensePlate, int size) {
 		setLicensePlate(licensePlate);
 		switch(size) {
