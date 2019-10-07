@@ -1,3 +1,7 @@
+/**
+ * @author Nicholas Smiriagine
+ */
+
 package application;
 import java.util.Random;
 
