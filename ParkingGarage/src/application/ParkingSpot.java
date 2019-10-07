@@ -1,4 +1,3 @@
-package application;
 public class ParkingSpot implements Comparable<ParkingSpot> {
 	
 	enum ParkingSpotType {
