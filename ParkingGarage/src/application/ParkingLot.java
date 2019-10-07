@@ -22,7 +22,7 @@ public class ParkingLot {
 	private String licensePlate;
 	private HashMap<String, ParkingSpot> parkedVehicles = new HashMap<String, ParkingSpot>();
 	
-	public void constructLot() {
+	public ParkingLot() {
 		for(int i = 0; i < maxMotorbikeSpots; i++) {
 			ParkingSpot.MotorbikeSpot motoSpot = new ParkingSpot.MotorbikeSpot("M-" + (i + 1));
 			motoLot.add(motoSpot);
