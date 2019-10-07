@@ -45,4 +45,8 @@ public class TicketBag {
             message = "Ticket not found.";
         return message;
     }
+
+    public Ticket searchTicket(String query){
+        return tickets.get(query);
+    }
 }
