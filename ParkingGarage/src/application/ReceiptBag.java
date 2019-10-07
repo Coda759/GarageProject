@@ -17,9 +17,10 @@ public class ReceiptBag {
      * Generates and adds a receipt using a ticket object.
      * @param ticket
      */
-    public void add(Ticket ticket){
+    public String add(Ticket ticket){
         Receipt receipt = new Receipt(ticket);
         receipts.put(receipt.getReceiptId(), receipt);
+        return receipt.getAmountDueString();
     }
     /**
      * Searches for the specified receipt using the ticket's ID.
