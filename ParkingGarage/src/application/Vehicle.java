@@ -1,3 +1,7 @@
+/**
+ * @author Nicholas Smiriagine
+ */
+
 package application;
 import java.util.Random;
 
@@ -102,6 +106,10 @@ public class Vehicle {
 //			setSize(VehicleType.MOTORBIKE.getSize());
 //		} 
 //	}
+	
+	public Vehicle() {
+		
+	}
 	
 	public Vehicle(String licensePlate, int size) {
 		setLicensePlate(licensePlate);

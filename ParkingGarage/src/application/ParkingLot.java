@@ -1,3 +1,7 @@
+/**
+ * @author Nicholas Smiriagine
+ */
+
 package application;
 import java.util.PriorityQueue;
 import java.util.Comparator;
@@ -11,13 +15,14 @@ public class ParkingLot {
 	private ParkingSpot.MotorbikeSpot motoSpot;
 	private ParkingSpot.SedanSpot sedanSpot;
 	private ParkingSpot.TruckSpot truckSpot;
+	private ParkingSpot spot;
 	private final int maxMotorbikeSpots = 15;
-	private final int maxSedanSpots = 7;
+	private final int maxSedanSpots = 70;
 	private final int maxTruckSpots = 15;
 	private String licensePlate;
 	private HashMap<String, ParkingSpot> parkedVehicles = new HashMap<String, ParkingSpot>();
 	
-	public void constructLot() {
+	public ParkingLot() {
 		for(int i = 0; i < maxMotorbikeSpots; i++) {
 			ParkingSpot.MotorbikeSpot motoSpot = new ParkingSpot.MotorbikeSpot("M-" + (i + 1));
 			motoLot.add(motoSpot);
@@ -49,21 +54,21 @@ public class ParkingLot {
 		return "Vehicles parked in truck lot: " + truckLot;
 	}
 	
-	public void parkVehicle(Vehicle vehicle) {
+	public String parkVehicle(Vehicle vehicle) {
 		switch(vehicle.getSize()) {
 		case 1: motoSpot = motoLot.poll();
 				motoSpot.addVehicle(vehicle);
 				parkedVehicles.put(vehicle.getLicensePlate(), motoSpot);
-				break;
+				return motoSpot.num;
 		case 2: sedanSpot = sedanLot.poll();
 				sedanSpot.addVehicle(vehicle);
 				parkedVehicles.put(vehicle.getLicensePlate(), sedanSpot);
-				break;
+				return sedanSpot.num;
 		case 3: truckSpot = truckLot.poll();
 				truckSpot.addVehicle(vehicle);
 				parkedVehicles.put(vehicle.getLicensePlate(), truckSpot);
-				break;
-		default: System.out.println("Error, this vehicle is not accepted");
+				return truckSpot.num;
+		default: return "Spot not found";
 		}
 	}
 	
