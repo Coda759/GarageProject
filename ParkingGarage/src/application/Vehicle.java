@@ -80,27 +80,40 @@ public class Vehicle {
 		this.size = size;
 	}
 	
-	//Types of Vehicles:
+//	//Types of Vehicles:
+//	
+//	public static class Truck extends Vehicle {
+//		public Truck() {
+//			setLicensePlate(generateLicensePlate());
+//			setSize(VehicleType.TRUCK.getSize());
+//		}
+//	}
+//	
+//	public static class Sedan extends Vehicle {
+//		public Sedan() {
+//			setLicensePlate(generateLicensePlate());
+//			setSize(VehicleType.SEDAN.getSize());
+//		}
+//	}
+//	
+//	public static class Motorbike extends Vehicle {
+//		public Motorbike() {
+//			setLicensePlate(generateLicensePlate());
+//			setSize(VehicleType.MOTORBIKE.getSize());
+//		} 
+//	}
 	
-	public static class Truck extends Vehicle {
-		public Truck() {
-			setLicensePlate(generateLicensePlate());
-			setSize(VehicleType.TRUCK.getSize());
+	public Vehicle(String licensePlate, int size) {
+		setLicensePlate(licensePlate);
+		switch(size) {
+		case 1: setSize(VehicleType.MOTORBIKE.getSize());
+				break;
+		case 2: setSize(VehicleType.SEDAN.getSize());
+				break;
+		case 3: setSize(VehicleType.TRUCK.getSize());
+				break;
+		default: System.out.println("Error, size not supported");
 		}
-	}
-	
-	public static class Sedan extends Vehicle {
-		public Sedan() {
-			setLicensePlate(generateLicensePlate());
-			setSize(VehicleType.SEDAN.getSize());
-		}
-	}
-	
-	public static class Motorbike extends Vehicle {
-		public Motorbike() {
-			setLicensePlate(generateLicensePlate());
-			setSize(VehicleType.MOTORBIKE.getSize());
-		} 
 	}
 	
 	@Override 
