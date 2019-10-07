@@ -31,9 +31,9 @@ public class Ticket {
 
 
     private void generateId(){
-        StringBuilder id = new StringBuilder();
+        StringBuilder id = new StringBuilder(this.attendantId.substring(3));
+        id.append(this.date.replaceAll("-", "").trim().substring(5));
         id.append(this.parkTime.replaceAll(":","").trim());
-        id.append(carId.trim().substring(0,4).replaceAll(" ",""));
         this.ticketId = id.toString();
     }
 
@@ -43,6 +43,9 @@ public class Ticket {
 
     public String getParkTime(){
         return parkTime;
+    }
+    public String getVehicleID(){
+    	return carId;
     }
 
     public double getRate(){
@@ -61,7 +64,7 @@ public class Ticket {
         ticketPrintout.append(spotId);
         ticketPrintout.append("\nPark Time: ");
         ticketPrintout.append(parkTime);
-        ticketPrintout.append("| Park Date: ");
+        ticketPrintout.append("\n Park Date: ");
         ticketPrintout.append(date);
         ticketPrintout.append("\nRate: ");
         ticketPrintout.append(rate);

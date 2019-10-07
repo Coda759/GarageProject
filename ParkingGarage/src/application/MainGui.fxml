@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitPane?>
@@ -28,54 +27,49 @@
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
-                                    <Button fx:id="parkVehicle_bt" layoutX="103.0" layoutY="208.0" mnemonicParsing="false" onAction="#checkinButtonPushed" text="Park Vehicle" textFill="#2fd326">
+                                    <Button layoutX="103.0" layoutY="208.0" mnemonicParsing="false" onAction="#checkinButtonPushed" text="Park Vehicle" textFill="#2fd326">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
                                     </Button>
-                                    <CheckBox fx:id="monthlyPlan_ckBox" layoutX="55.0" layoutY="164.0" mnemonicParsing="false" text="Monthly Plan" />
-                                    <TextField fx:id="lPlate_TextF" layoutX="36.0" layoutY="95.0" promptText="Licence Plate Number" />
+                                    <TextField fx:id="lPlate_TextF" alignment="TOP_LEFT" layoutX="36.0" layoutY="95.0" promptText="Ex. NY ABC-1234" />
                                     <Label layoutX="58.0" layoutY="14.0" text="Check in" textFill="#2035ae" underline="true">
                                        <font>
                                           <Font name="AppleGothic Regular" size="32.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="68.0" layoutY="303.0" text="Vehicle Assigned Lot:" />
-                                    <Text layoutX="46.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter License Plate:">
+                                    <Label layoutX="68.0" layoutY="303.0" text="Assigned Lot:" />
+                                    <Text layoutX="46.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State  License Plate:">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <TextField fx:id="lot_TextF" editable="false" layoutX="211.0" layoutY="298.0" prefHeight="27.0" prefWidth="53.0" />
-                                    <Button fx:id="autoGen_bt" layoutX="222.0" layoutY="34.0" mnemonicParsing="false" onAction="#autoGenButtonPushed" text="Generate License Plate" />
+                                    <TextField fx:id="lot_TextF" editable="false" layoutX="165.0" layoutY="298.0" prefHeight="27.0" prefWidth="138.0" />
+                                    <Button layoutX="219.0" layoutY="95.0" mnemonicParsing="false" onAction="#autoGenButtonPushed" text="Generate License Plate" />
                                     <Label fx:id="checkIn_label" layoutX="173.0" layoutY="253.0" text="Checkin label" textFill="RED" visible="false" />
-                                    <TextField fx:id="state_TextF" layoutX="239.0" layoutY="95.0" prefHeight="27.0" prefWidth="74.0" promptText="Ex.NY,NJ" />
-                                    <TextField fx:id="types_TextF" layoutX="240.0" layoutY="160.0" prefHeight="27.0" prefWidth="25.0" promptText="0" />
-                                    <Label layoutX="240.0" layoutY="76.0" text="Enter State:">
+                                    <TextField fx:id="types_TextF" layoutX="96.0" layoutY="163.0" prefHeight="27.0" prefWidth="34.0" promptText="0" />
+                                    <Label layoutX="74.0" layoutY="140.0" text="Vehicle Size:">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="204.0" layoutY="141.0" text="Vehicle Size:">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="302.0" layoutY="142.0" opacity="0.54" text="1-Motorcycle">
+                                    <Label layoutX="177.0" layoutY="143.0" opacity="0.54" text="1-Motorcycle">
                                        <font>
                                           <Font size="11.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="302.0" layoutY="157.0" opacity="0.54" text="2-Car">
+                                    <Label layoutX="175.0" layoutY="155.0" opacity="0.54" text="2-Car">
                                        <font>
                                           <Font size="11.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="302.0" layoutY="175.0" opacity="0.54" text="3-Truck">
+                                    <Label layoutX="177.0" layoutY="169.0" opacity="0.54" text="3-Truck">
                                        <font>
                                           <Font size="11.0" />
                                        </font>
                                     </Label>
+                                    <Label layoutX="78.0" layoutY="334.0" text="Ticket ID:" />
+                                    <TextField fx:id="getTicketID" layoutX="163.0" layoutY="329.0" />
                                  </children>
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="307.0" prefWidth="707.0">
@@ -85,34 +79,35 @@
                                           <Font name="AppleGothic Regular" size="32.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="checkout_ID" layoutX="129.0" layoutY="94.0" prefHeight="27.0" prefWidth="128.0" promptText="Ex. CSE4455NY" />
-                                    <Button fx:id="getInfo_bt" layoutX="261.0" layoutY="94.0" mnemonicParsing="false" onAction="#ticketSearchButtonPushed" text="Search" />
-                                    <Label layoutX="276.0" layoutY="174.0" text="Amout Due:" />
-                                    <Button fx:id="checkout_bt" layoutX="279.0" layoutY="266.0" mnemonicParsing="false" onAction="#checkoutButtonPushed" text="Checkout" textFill="#1b18bf">
+                                    <TextField fx:id="checkout_ID" layoutX="122.0" layoutY="94.0" prefHeight="27.0" prefWidth="172.0" />
+                                    <Button layoutX="302.0" layoutY="94.0" mnemonicParsing="false" onAction="#checkoutSearchButtonPushed" text="Search" />
+                                    <Label layoutX="304.0" layoutY="196.0" text="Amout Due:" />
+                                    <Button layoutX="279.0" layoutY="266.0" mnemonicParsing="false" onAction="#checkoutButtonPushed" text="Checkout" textFill="#1b18bf">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Button>
-                                    <TextField fx:id="amountDue_TextF" editable="false" layoutX="285.0" layoutY="193.0" prefHeight="27.0" prefWidth="47.0" promptText="\$0.0" />
-                                    <Label layoutX="5.0" layoutY="98.0" text="Ticket Number:">
+                                    <TextField fx:id="amountDue_TextF" editable="false" layoutX="302.0" layoutY="220.0" prefHeight="27.0" prefWidth="76.0" promptText="0.0" />
+                                    <Label layoutX="44.0" layoutY="98.0" text="Ticket ID:">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Label>
-                                    <TextArea fx:id="cheackOut_TextA" editable="false" layoutX="11.0" layoutY="138.0" prefHeight="218.0" prefWidth="245.0" />
+                                    <TextArea fx:id="cheackOut_TextA" editable="false" layoutX="11.0" layoutY="138.0" prefHeight="218.0" prefWidth="255.0" />
                                     <Button layoutX="320.0" layoutY="14.0" mnemonicParsing="false" onAction="#signoutButtonPushed" text="Sign Out" />
+                                    <Label layoutX="290.0" layoutY="225.0" text="\$" />
                                  </children>
                               </AnchorPane>
                           </items>
                         </SplitPane>
-                        <TextField fx:id="vehicleSearch_TextF" layoutX="43.0" layoutY="421.0" promptText="Licence Plate Number" />
-                        <Text layoutX="79.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search For Vehicle" underline="true">
+                        <TextField fx:id="vehicleSearch_TextF" layoutX="43.0" layoutY="421.0" />
+                        <Text layoutX="14.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search For Receipt" underline="true">
                            <font>
-                              <Font size="18.0" />
+                              <Font size="24.0" />
                            </font>
                         </Text>
-                        <Button fx:id="vehicleSearch_bt" layoutX="232.0" layoutY="421.0" mnemonicParsing="false" onAction="#vehicleSearchButtonPushed" text="Retrieve Vehicle " />
-                        <TextArea fx:id="vehicleSearch_TextA" editable="false" layoutX="400.0" layoutY="401.0" prefHeight="236.0" prefWidth="321.0" />
+                        <Button layoutX="54.0" layoutY="456.0" mnemonicParsing="false" onAction="#receiptSearchButtonPushed" text="Retrieve Receipt Info" />
+                        <TextArea fx:id="vehicleSearch_TextA" editable="false" layoutX="265.0" layoutY="408.0" prefHeight="247.0" prefWidth="361.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -136,9 +131,9 @@
                                     <TextField fx:id="carPrices_TextF" layoutX="413.0" layoutY="64.0" prefHeight="27.0" prefWidth="60.0" promptText="10.00" />
                                     <TextField fx:id="motorcPrices_TextF" layoutX="413.0" layoutY="108.0" prefHeight="27.0" prefWidth="60.0" promptText="7.00" />
                                     <TextField fx:id="truckPrices_TextF" layoutX="413.0" layoutY="146.0" prefHeight="27.0" prefWidth="60.0" promptText="18.00" />
-                                    <Button fx:id="saveNewPrices_bt" layoutX="420.0" layoutY="193.0" mnemonicParsing="false" onAction="#setPriceButtonPushed" text="Set New Rates" />
+                                    <Button layoutX="420.0" layoutY="193.0" mnemonicParsing="false" onAction="#setPriceButtonPushed" text="Set New Rates" />
                                     <Label fx:id="price_label" layoutX="511.0" layoutY="105.0" prefHeight="17.0" prefWidth="130.0" text="Price Label" textFill="#28b238" visible="false" />
-                                    <Button fx:id="currentPrices_bt" layoutX="234.0" layoutY="193.0" mnemonicParsing="false" onAction="#getPriceButtonPushed" text="Show Current Rates" />
+                                    <Button layoutX="234.0" layoutY="193.0" mnemonicParsing="false" onAction="#getPriceButtonPushed" text="Show Current Rates" />
                                     <Label layoutX="397.0" layoutY="69.0" text="\$">
                                        <font>
                                           <Font size="14.0" />
@@ -158,55 +153,45 @@
                                  </children></AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="372.0" prefWidth="804.0">
                                  <children>
-                                    <Label layoutX="438.0" layoutY="7.0" text="Account Managment" textFill="#b57823" underline="true">
+                                    <Label layoutX="93.0" layoutY="14.0" text="Account Managment" textFill="#b57823" underline="true">
                                        <font>
                                           <Font size="29.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="accSearch_TextF" layoutX="496.0" layoutY="73.0" promptText="User Name" />
-                                    <Button fx:id="accSearch_bt" layoutX="681.0" layoutY="73.0" mnemonicParsing="false" onAction="#accountSearchButtonPushed" text="Search" />
-                                    <TextField fx:id="firstN_TextF" layoutX="110.0" layoutY="64.0" promptText="Joe" />
-                                    <Label layoutX="18.0" layoutY="68.0" text="First Name:">
+                                    <TextField fx:id="accSearch_TextF" layoutX="504.0" layoutY="32.0" promptText="User ID" />
+                                    <Button layoutX="705.0" layoutY="32.0" mnemonicParsing="false" onAction="#accountSearchButtonPushed" text="Search" />
+                                    <TextField fx:id="firstN_TextF" layoutX="110.0" layoutY="117.0" promptText="Joe" />
+                                    <Label layoutX="19.0" layoutY="121.0" text="First Name:">
                                        <font>
                                           <Font size="14.0" />
                                        </font></Label>
-                                    <Label layoutX="18.0" layoutY="112.0" text="Last Name:">
+                                    <Label layoutX="19.0" layoutY="162.0" text="Last Name:">
                                        <font>
                                           <Font size="14.0" />
                                        </font></Label>
-                                    <TextField fx:id="lastN_TextF" layoutX="110.0" layoutY="108.0" promptText="Smith" />
-                                    <Label layoutX="20.0" layoutY="25.0" text="User name: ">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font></Label>
-                                    <Label layoutX="19.0" layoutY="218.0" text="Password: ">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font></Label>
-                                    <TextField fx:id="userN_TextF" layoutX="110.0" layoutY="21.0" promptText="######" />
-                                    <PasswordField fx:id="pw_PassF" layoutX="110.0" layoutY="214.0" promptText="*****" />
-                                    <DatePicker fx:id="date" layoutX="110.0" layoutY="252.0" promptText="10/1/2019" />
-                                    <Label layoutX="22.0" layoutY="257.0" text="Start Date:" />
-                                    <Button fx:id="accCreate_bt" layoutX="211.0" layoutY="309.0" mnemonicParsing="false" onAction="#accountCreateButtonPushed" text="Create Account" />
-                                    <Button fx:id="accDelete_bt" layoutX="27.0" layoutY="309.0" mnemonicParsing="false" onAction="#accountDeleteButtonPushed" text="Delete" />
-                                    <Button fx:id="accUpdate_bt" layoutX="116.0" layoutY="309.0" mnemonicParsing="false" onAction="#accountUpdateButtonPushed" text="Update" />
-                                    <Label layoutX="514.0" layoutY="52.0" text="Look Up Account">
+                                    <TextField fx:id="lastN_TextF" layoutX="110.0" layoutY="158.0" promptText="Smith" />
+                                    <Label fx:id="currentUser_Label" layoutX="677.0" layoutY="396.0" text="User ID: " />
+                                    <Button layoutX="211.0" layoutY="309.0" mnemonicParsing="false" onAction="#accountCreateButtonPushed" text="Create Account" />
+                                    <Button layoutX="27.0" layoutY="309.0" mnemonicParsing="false" onAction="#accountDeleteButtonPushed" text="Delete" />
+                                    <Button layoutX="116.0" layoutY="309.0" mnemonicParsing="false" onAction="#accountUpdateButtonPushed" text="Update" />
+                                    <Label layoutX="504.0" layoutY="4.0" text="Look Up Account">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Label>
                                     <Label fx:id="search_label" layoutX="496.0" layoutY="104.0" prefHeight="17.0" prefWidth="220.0" text="SearchLabel" textFill="RED" visible="false" />
                                     <Label fx:id="accAction_label" layoutX="79.0" layoutY="347.0" prefHeight="17.0" prefWidth="147.0" text="LabelSave" visible="false" />
-                                    <CheckBox fx:id="isManager_ckBox" layoutX="297.0" layoutY="77.0" mnemonicParsing="false" text="Manager Account">
+                                    <CheckBox fx:id="isManager_ckBox" layoutX="108.0" layoutY="70.0" mnemonicParsing="false" text="Manager Account">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </CheckBox>
-                                    <Label layoutX="28.0" layoutY="147.0" text="Address:" />
-                                    <Label layoutX="28.0" layoutY="184.0" text="Phone #:" />
-                                    <TextField fx:id="address_TextF" layoutX="100.0" layoutY="142.0" prefHeight="27.0" prefWidth="205.0" promptText="123 Java st., Ny,Ny 12345" />
-                                    <TextField fx:id="phoneN_TextF" layoutX="110.0" layoutY="179.0" promptText="(800)888-8888" />
-                                    <TextArea fx:id="searchResult_TextA" layoutX="496.0" layoutY="130.0" prefHeight="232.0" prefWidth="255.0" />
+                                    <Label layoutX="28.0" layoutY="205.0" text="Address:" />
+                                    <Label layoutX="29.0" layoutY="248.0" text="Phone #:" />
+                                    <TextField fx:id="address_TextF" layoutX="109.0" layoutY="200.0" prefHeight="27.0" prefWidth="205.0" promptText="123 Java st., Ny,Ny 12345" />
+                                    <TextField fx:id="phoneN_TextF" layoutX="110.0" layoutY="243.0" promptText="(800)888-8888" />
+                                    <TextArea fx:id="searchResult_TextA" layoutX="441.0" layoutY="89.0" prefHeight="169.0" prefWidth="318.0" />
+                                    <PasswordField fx:id="pw_PassF" layoutX="110.0" layoutY="282.0" visible="false" />
                                  </children>
                               </AnchorPane>
                           </items>

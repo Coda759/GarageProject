@@ -58,7 +58,6 @@ public class AccountBag {
      * @param firstName
      * @param lastName
      * @param isManager If true account is created as a manager class; if false account as attendant class.
-     * @return Returns the details of the new account as a String.
      */
     public String addAccount(String address, String phoneNumber, String firstName, String lastName, Boolean isManager){
         Account newAccount;

@@ -3,6 +3,7 @@ package application;
 import java.util.HashMap;
 
 /**
+ * @author Jonathon Shea
  * Bag for holding receipt objects implemented with a HashMap.
  */
 public class ReceiptBag {

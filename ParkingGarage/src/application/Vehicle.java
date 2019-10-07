@@ -1,7 +1,6 @@
 /**
  * @author Nicholas Smiriagine
  */
-
 package application;
 import java.util.Random;
 
@@ -37,36 +36,36 @@ public class Vehicle {
 	private Random rand = new Random();
 	private int size;
 	
-	public String generateLicensePlate() {
-		
-		char[] plate1 = new char[charLength];
-		
-		for(int i = 0; i < charLength; i++) {
-			plate1[i] = characters.charAt(rand.nextInt(characters.length()));
-		}
-		
-		for(int i = 0; i < plate1.length; i++) {
-			licensePlateP1 += plate1[i];
-		}
-		
-		char[] plate2 = new char[numLength];
-		
-		for(int i = 0; i < numLength; i++) {
-			plate2[i] = numbers.charAt(rand.nextInt(numbers.length()));
-		}
-		
-		for(int i = 0; i < plate2.length; i++) {
-			licensePlateP2 += plate2[i];
-		}
-		
-		int randomStateNum = rand.nextInt(states.length);
-		String randomState = states[randomStateNum];
-		
-		setLicensePlate(randomState + " " + licensePlateP1 + "-" + licensePlateP2);
-		
-		return licensePlateNum;
-		
-	}
+public String generateLicensePlate() {
+        
+        char[] plate1 = new char[charLength];
+        
+        for(int i = 0; i < charLength; i++) {
+            plate1[i] = characters.charAt(rand.nextInt(characters.length()));
+        }
+        
+        for(int i = 0; i < plate1.length; i++) {
+            licensePlateP1 += plate1[i];
+        }
+        
+        char[] plate2 = new char[numLength];
+        
+        for(int i = 0; i < numLength; i++) {
+            plate2[i] = numbers.charAt(rand.nextInt(numbers.length()));
+        }
+        
+        for(int i = 0; i < plate2.length; i++) {
+            licensePlateP2 += plate2[i];
+        }
+        
+        int randomStateNum = rand.nextInt(states.length);
+        String randomState = states[randomStateNum];
+        
+        setLicensePlate(randomState + " " + licensePlateP1 + "-" + licensePlateP2);
+        
+        return licensePlateNum;
+        
+    }
 
 	public String getLicensePlate() {
 		return licensePlateNum;
@@ -107,10 +106,9 @@ public class Vehicle {
 //		} 
 //	}
 	
-	public Vehicle() {
+	public Vehicle(){
 		
 	}
-	
 	public Vehicle(String licensePlate, int size) {
 		setLicensePlate(licensePlate);
 		switch(size) {
@@ -130,4 +128,5 @@ public class Vehicle {
 	}
 
 } 
+
  

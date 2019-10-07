@@ -1,7 +1,6 @@
 /**
  * @author Nicholas Smiriagine
  */
-
 package application;
 import java.util.PriorityQueue;
 import java.util.Comparator;
@@ -15,7 +14,6 @@ public class ParkingLot {
 	private ParkingSpot.MotorbikeSpot motoSpot;
 	private ParkingSpot.SedanSpot sedanSpot;
 	private ParkingSpot.TruckSpot truckSpot;
-	private ParkingSpot spot;
 	private final int maxMotorbikeSpots = 15;
 	private final int maxSedanSpots = 70;
 	private final int maxTruckSpots = 15;
@@ -35,8 +33,9 @@ public class ParkingLot {
 			ParkingSpot.SedanSpot sedanSpot = new ParkingSpot.SedanSpot("S-"+ (i + 1));
 			sedanLot.add(sedanSpot);
 		}
+		
 	}
-	
+
 	public String showLot() {
 		return motoLot + "\n" + sedanLot + "\n" + truckLot + "\n" + "Parked vehicles: " + parkedVehicles;
 	}
@@ -55,22 +54,34 @@ public class ParkingLot {
 	}
 	
 	public String parkVehicle(Vehicle vehicle) {
-		switch(vehicle.getSize()) {
-		case 1: motoSpot = motoLot.poll();
-				motoSpot.addVehicle(vehicle);
-				parkedVehicles.put(vehicle.getLicensePlate(), motoSpot);
-				return motoSpot.num;
-		case 2: sedanSpot = sedanLot.poll();
-				sedanSpot.addVehicle(vehicle);
-				parkedVehicles.put(vehicle.getLicensePlate(), sedanSpot);
-				return sedanSpot.num;
-		case 3: truckSpot = truckLot.poll();
-				truckSpot.addVehicle(vehicle);
-				parkedVehicles.put(vehicle.getLicensePlate(), truckSpot);
-				return truckSpot.num;
-		default: return "Spot not found";
-		}
-	}
+        switch(vehicle.getSize()) {
+        case 1: motoSpot = motoLot.poll();
+        		if(motoSpot != null)
+        		{
+                motoSpot.addVehicle(vehicle);
+                parkedVehicles.put(vehicle.getLicensePlate(), motoSpot);
+                return motoSpot.num;
+                }
+        		return "Spots Full";
+        case 2: sedanSpot = sedanLot.poll();
+        		if(sedanSpot != null)
+        		{				
+                sedanSpot.addVehicle(vehicle);
+                parkedVehicles.put(vehicle.getLicensePlate(), sedanSpot);
+                return sedanSpot.num;
+        		}
+        		return "Spots Full";
+        case 3: truckSpot = truckLot.poll();
+        		if(truckSpot != null)
+        		{
+                truckSpot.addVehicle(vehicle);
+                parkedVehicles.put(vehicle.getLicensePlate(), truckSpot);
+                return truckSpot.num;
+        		}	
+                return "Spots Full";
+        default: return "Spot not found";
+        }
+    }
 	
 	public void retrieveVehicle(String licensePlate) {
 		ParkingSpot spot = parkedVehicles.remove(licensePlate);
