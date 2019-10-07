@@ -1,4 +1,3 @@
-package application;
 import java.util.Random;
 
 public class Vehicle {
@@ -105,7 +104,8 @@ public class Vehicle {
 	
 	@Override 
 	public String toString() {
-		return this.licensePlateNum + " " + this.getSize();
+		return this.licensePlateNum + " " +  "s-" + this.getSize();
 	}
+
 } 
  
