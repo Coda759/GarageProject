@@ -23,10 +23,12 @@ public class TicketBag {
      * @param attendantId
      * @param rate
      * @param spotId
+     * @return Returns the new ticketId
      */
-    public void add(String carId, String attendantId, double rate, String spotId){
+    public String add(String carId, String attendantId, double rate, String spotId){
         Ticket ticket = new Ticket(carId, attendantId, rate, spotId);
         tickets.put(ticket.getTicketId(), ticket);
+        return ticket.getTicketId();
     }
 
     /**
