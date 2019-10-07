@@ -1,6 +1,6 @@
-package application;
 import java.util.PriorityQueue;
 import java.util.Comparator;
+import java.util.HashMap;
 
 public class ParkingLot {
 	
@@ -10,15 +10,29 @@ public class ParkingLot {
 	private ParkingSpot.MotorbikeSpot motoSpot;
 	private ParkingSpot.SedanSpot sedanSpot;
 	private ParkingSpot.TruckSpot truckSpot;
-	private int motoCount = 0;
-	private int sedanCount = 0;
-	private int truckCount = 0;
 	private final int maxMotorbikeSpots = 15;
-	private final int maxSedanSpots = 70;
+	private final int maxSedanSpots = 7;
 	private final int maxTruckSpots = 15;
+	private String licensePlate;
+	private HashMap<String, ParkingSpot> parkedVehicles = new HashMap<String, ParkingSpot>();
+	
+	public void constructLot() {
+		for(int i = 0; i < maxMotorbikeSpots; i++) {
+			ParkingSpot.MotorbikeSpot motoSpot = new ParkingSpot.MotorbikeSpot("M-" + (i + 1));
+			motoLot.add(motoSpot);
+		}
+		for(int i = 0; i < maxTruckSpots; i++) {
+			ParkingSpot.TruckSpot truckSpot = new ParkingSpot.TruckSpot("T-" + (i + 1));
+			truckLot.add(truckSpot);
+		}
+		for(int i = 0; i < maxSedanSpots; i++) {
+			ParkingSpot.SedanSpot sedanSpot = new ParkingSpot.SedanSpot("S-"+ (i + 1));
+			sedanLot.add(sedanSpot);
+		}
+	}
 	
 	public String showLot() {
-		return motoLot + "\n" + sedanLot + "\n" + truckLot;
+		return motoLot + "\n" + sedanLot + "\n" + truckLot + "\n" + "Parked vehicles: " + parkedVehicles;
 	}
 	
 	//Optional: show lots separately
@@ -34,66 +48,49 @@ public class ParkingLot {
 		return "Vehicles parked in truck lot: " + truckLot;
 	}
 	
-	public void parkVehicle(Vehicle vehicle) {		
+	public void parkVehicle(Vehicle vehicle) {
 		switch(vehicle.getSize()) {
-		case 1: if(motoCount < maxMotorbikeSpots) {
-				motoSpot = new ParkingSpot.MotorbikeSpot("M-" + (motoCount++ +1));
+		case 1: motoSpot = motoLot.poll();
 				motoSpot.addVehicle(vehicle);
-				motoLot.add(motoSpot);
-				} else {
-					System.out.println("No more morbike spots available");
-				}
+				parkedVehicles.put(vehicle.getLicensePlate(), motoSpot);
 				break;
-		case 2: if(sedanCount < maxSedanSpots) {
-				sedanSpot = new ParkingSpot.SedanSpot("S-" + (sedanCount++ +1));
+		case 2: sedanSpot = sedanLot.poll();
 				sedanSpot.addVehicle(vehicle);
-				sedanLot.add(sedanSpot);
-				} else {
-					System.out.println("No more sedan spots available");
-				}
+				parkedVehicles.put(vehicle.getLicensePlate(), sedanSpot);
 				break;
-		case 3: if(truckCount < maxTruckSpots) {
-				truckSpot = new ParkingSpot.TruckSpot("T-" + (truckCount++ +1));
+		case 3: truckSpot = truckLot.poll();
 				truckSpot.addVehicle(vehicle);
-				truckLot.add(truckSpot);
-				} else {
-					System.out.println("No more truck spots available");
-				}
+				parkedVehicles.put(vehicle.getLicensePlate(), truckSpot);
 				break;
-				default: System.out.println("Error, this type of car is not accepted");
+		default: System.out.println("Error, this vehicle is not accepted");
 		}
 	}
 	
-	public void retrieveVehicle(Vehicle vehicle) {
-		switch(vehicle.getSize()) {
-		case 1: motoSpot.removeVehicle(vehicle);
-				motoLot.remove(motoSpot);
-				motoCount--;
-				break;
-		case 2: sedanSpot.removeVehicle(vehicle);
-				sedanLot.remove(sedanSpot);
-				sedanCount--;
-				break;
-		case 3: truckSpot.removeVehicle(vehicle);
-				truckLot.remove(truckSpot);
-				truckCount--;
-				break;
-				default: System.out.println("Vehicle not found");
+	public void retrieveVehicle(String licensePlate) {
+		ParkingSpot spot = parkedVehicles.remove(licensePlate);
+		this.licensePlate = licensePlate;
+		spot.removeVehicle();
+		if(spot instanceof ParkingSpot.SedanSpot) {
+			sedanLot.add((ParkingSpot.SedanSpot) spot);
+		} else if(spot instanceof ParkingSpot.MotorbikeSpot) {
+			motoLot.add((ParkingSpot.MotorbikeSpot) spot);
+		} else {
+			truckLot.add((ParkingSpot.TruckSpot) spot);
 		}
 	}
 	
 	public class lotComparator implements Comparator<ParkingSpot> {
-		@Override
-		public int compare(ParkingSpot spot, ParkingSpot other) {
-			if(spot.num.compareTo(other.num) < 0) {
-				return -1;
-			} else if(spot.num.compareTo(other.num) > 0) {
-				return 1;
-			} else {
-				return 0;
-			}
+	@Override
+	public int compare(ParkingSpot spot, ParkingSpot other) {
+		int spotNum = Integer.parseInt(spot.num.substring(2));
+		int spotNum2 = Integer.parseInt(other.num.substring(2));
+		if(spotNum < spotNum2) {
+			return -1;
+		} else if(spotNum > spotNum2) {
+			return 1;
+		} else {
+			return 0;
 		}
 	}
-	
-	
+	}
 }
