@@ -35,4 +35,8 @@ public class ReceiptBag {
             message = "Receipt not found.";
         return message;
     }
+
+    public String getAmountDue(String query){
+        return receipts.get(query).getAmountDueString();
+    }
 }
